@@ -22,7 +22,7 @@ const AssessmentResume = () => {
 
           <ST.Column50>
             <ST.Porcetagem>
-              <span>10%</span>
+              <span>20%</span>
             </ST.Porcetagem>
           </ST.Column50>
         </ST.Row>
