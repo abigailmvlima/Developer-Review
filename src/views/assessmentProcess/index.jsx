@@ -11,14 +11,6 @@ const AssessmentProcess = () => {
   const stateProcess = useSelector((s) => s?.ASS_PROCESS);
   const [question, setQuestion] = useState({});
 
-  useEffect(() => {
-    const { page } = stateProcess;
-    console.log(page);
-    if (page === data?.row.length - 1) {
-      actions.navigate.show("/avaliacao/resumo");
-    }
-  }, [data?.row.length, stateProcess]);
-
   const onNext = () => {
     setQuestion({});
     const newPage = stateProcess?.page + 1;
@@ -29,6 +21,9 @@ const AssessmentProcess = () => {
         [`${newPage}`]: question,
       },
     });
+    if (newPage > data?.row.length - 1) {
+      actions.navigate.show("/avaliacao/resumo");
+    }
   };
 
   return (
