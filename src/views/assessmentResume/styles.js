@@ -33,7 +33,7 @@ export const Resume = styled.div`
 export const ContentTeste = styled.div`
   display: flex;
   flex-direction: column;
-  border-radius: 30px;
+  border-radius: 20px;
 
   background-color: #fff;
   background: rgb(234, 242, 242);
@@ -102,4 +102,30 @@ export const Porcetagem = styled.div`
     font-size: 20px;
     font-weight: bold;
   }
+`;
+
+export const TituloErros = styled.div`
+  display: Flex;
+  margin-top: 10px;
+  justify-content: center;
+  font-size: 18px;
+  font-weight: bold;
+  color: #fff;
+`;
+
+export const ContentErros = styled.div`
+  display: flex;
+  flex-direction: column;
+  border-radius: 20px;
+  background-color: #fff;
+  background: rgb(234, 242, 242);
+  background: linear-gradient(
+    200deg,
+    rgba(234, 242, 242, 0.738532913165266) 2%,
+    rgba(234, 242, 242, 0.7693452380952381) 51%,
+    rgba(234, 242, 242, 1) 100%,
+    rgba(234, 242, 242, 0.5536589635854341) 100%
+  );
+  margin: 10px 40px;
+  padding: 30px 30px;
 `;

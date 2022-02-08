@@ -1,5 +1,20 @@
 const data = {
   title: "Teste de React",
+  response: [
+    {
+      id: 1,
+      value: ["C"],
+    },
+    {
+      id: 2,
+      value: ["A"],
+    },
+
+    {
+      id: 3,
+      value: ["A"],
+    },
+  ],
   row: [
     {
       id: 1,
@@ -43,7 +58,7 @@ const data = {
       response: [
         {
           value: "A",
-          label: "Para declarar um estado.",
+          label: "Para estilizar.",
         },
         {
           value: "B",

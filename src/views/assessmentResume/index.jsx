@@ -3,21 +3,32 @@ import moment from "moment";
 import { useSelector } from "react-redux";
 
 import * as ST from "./styles";
+import Question from "../../components/Questions";
 
 const AssessmentResume = () => {
   const stateData = useSelector((s) => s?.ASSESSMENT);
   const data = stateData?.data;
   const stateProcess = useSelector((s) => s?.ASS_PROCESS);
   const [acountQuestion, setAcountQuestion] = useState(0);
+  const [acountHits, setAcountHits] = useState(0);
+  const [acountPercentual, setAcountPercentual] = useState(0);
 
   useEffect(() => {
     const question = stateProcess.question;
-    console.log(stateProcess);
+    const responses = data.response;
     setAcountQuestion(data?.row.length);
-    data.row.filter((d) => {
+    const hits = responses.filter((d) => {
       const temp = question[d.id];
+      const res = d.value.filter((v) => temp[v] == true);
+      return res.length == d.value.length;
     });
+    setAcountHits(hits.length);
   }, [data, stateProcess]);
+
+  useEffect(() => {
+    const percentual = Math.round((acountHits * 100) / acountQuestion);
+    setAcountPercentual(percentual);
+  }, [acountQuestion, acountHits]);
 
   return (
     <ST.Container>
@@ -33,16 +44,20 @@ const AssessmentResume = () => {
         <ST.Row>
           <ST.Column50>
             <ST.TQuestion>Total de Questões: {acountQuestion}</ST.TQuestion>
-            <ST.TAcertos>Total de Acertos: 4</ST.TAcertos>
+            <ST.TAcertos>Total de Acertos: {acountHits}</ST.TAcertos>
           </ST.Column50>
 
           <ST.Column50>
             <ST.Porcetagem>
-              <span>20%</span>
+              <span>{`${acountPercentual}%`}</span>
             </ST.Porcetagem>
           </ST.Column50>
         </ST.Row>
       </ST.ContentTeste>
+      <ST.TituloErros>Erros</ST.TituloErros>
+      <ST.ContentErros>
+        <Question />
+      </ST.ContentErros>
     </ST.Container>
   );
 };
