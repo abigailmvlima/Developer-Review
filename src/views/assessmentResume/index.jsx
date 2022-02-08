@@ -12,6 +12,7 @@ const AssessmentResume = () => {
   const [acountQuestion, setAcountQuestion] = useState(0);
   const [acountHits, setAcountHits] = useState(0);
   const [acountPercentual, setAcountPercentual] = useState(0);
+  const [listErrors, setListErrors] = useState([]);
 
   useEffect(() => {
     const question = stateProcess.question;
@@ -23,6 +24,21 @@ const AssessmentResume = () => {
       return res.length == d.value.length;
     });
     setAcountHits(hits.length);
+    console.log(22, data);
+    const errors = responses
+      .filter((d) => {
+        const temp = question[d.id];
+        const res = d.value.filter((v) => temp[v] == true);
+        return res.length != d.value.length;
+      })
+      .map((m) => {
+        const row = data.row.find((f) => f.id == m.id);
+        const res = data.response.find((f) => f.id == m.id);
+        return {
+          label: row.text,
+        };
+      });
+    console.log(errors);
   }, [data, stateProcess]);
 
   useEffect(() => {
@@ -56,7 +72,15 @@ const AssessmentResume = () => {
       </ST.ContentTeste>
       <ST.TituloErros>Erros</ST.TituloErros>
       <ST.ContentErros>
-        <Question />
+        <Question
+          label={"texto"}
+          values={[
+            {
+              label: "resposta",
+              value: "a",
+            },
+          ]}
+        />
       </ST.ContentErros>
     </ST.Container>
   );

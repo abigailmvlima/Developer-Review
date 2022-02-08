@@ -10,25 +10,26 @@ export const Container = styled.div`
 export const Question = styled.div`
   display: Flex;
   flex-direction: column;
-  font-size: 12px;
+  font-size: 11px;
   font-weight: bold;
   margin-bottom: 5px;
+  margin-left: 5px;
 `;
 
 export const ContentFeedback = styled.div`
   display: Flex;
   flex-direction: row;
-  margin-left: 10px;
+  margin-left: 20px;
 `;
 
 export const FeedbackLetter = styled.div`
   display: Flex;
-  font-size: 11px;
+  font-size: 10px;
   font-weight: bold;
 `;
 
 export const FeedbackResponse = styled.div`
   display: Flex;
-  font-size: 11px;
+  font-size: 10px;
   margin-left: 5px;
 `;

@@ -1,15 +1,21 @@
-import { memo } from "react";
+import { memo, Fragment } from "react";
 
 import * as ST from "./styles";
 
-const Questions = () => {
+const Questions = ({ label, values }) => {
+  if (!label) return <Fragment />;
   return (
     <ST.Container>
-      <ST.Question>O que é React?</ST.Question>
-      <ST.ContentFeedback>
-        <ST.FeedbackLetter>c)</ST.FeedbackLetter>
-        <ST.FeedbackResponse>React é uma biblioteca</ST.FeedbackResponse>
-      </ST.ContentFeedback>
+      <ST.Question>{label}</ST.Question>
+      {values &&
+        values.map((row, key) => {
+          return (
+            <ST.ContentFeedback key={key}>
+              <ST.FeedbackLetter>{row.value}</ST.FeedbackLetter>
+              <ST.FeedbackResponse>{row.label}</ST.FeedbackResponse>
+            </ST.ContentFeedback>
+          );
+        })}
     </ST.Container>
   );
 };
